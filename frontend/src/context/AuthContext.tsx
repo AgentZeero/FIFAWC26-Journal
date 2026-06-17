@@ -20,7 +20,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (token) {
       apiGetMe()
-        .then((data) => setUsername(data.username))
+        .then((data: any) => setUsername(data.username))
         .catch(() => {
           setToken(null);
           localStorage.removeItem("token");
@@ -32,14 +32,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [token]);
 
   const login = async (u: string, p: string) => {
-    const data = await apiLogin(u, p);
+    const data: any = await apiLogin(u, p);
     localStorage.setItem("token", data.access_token);
     setToken(data.access_token);
     setUsername(data.username);
   };
 
   const register = async (u: string, p: string) => {
-    const data = await apiRegister(u, p);
+    const data: any = await apiRegister(u, p);
     localStorage.setItem("token", data.access_token);
     setToken(data.access_token);
     setUsername(data.username);

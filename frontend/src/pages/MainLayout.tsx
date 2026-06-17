@@ -5,7 +5,6 @@ import { Dashboard } from "./Dashboard";
 import { useTeams, useNarrative } from "../hooks/useTeams";
 import { useAuth } from "../context/AuthContext";
 import { useTheme } from "../context/ThemeContext";
-import type { MatchRatingInput, TeamStatus } from "../types";
 import { LogOut, User, Moon, Sun } from "lucide-react";
 
 export function MainLayout() {

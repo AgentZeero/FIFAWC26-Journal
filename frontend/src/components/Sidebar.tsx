@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import type { Team, SortBy, FilterStatus } from "../types";
 import { TeamCard } from "./TeamCard";
 import { teamAvg } from "../utils";
-import { Trophy, Search, Filter } from "lucide-react";
+import { Trophy, Search} from "lucide-react";
 
 interface Props {
   teams: Record<string, Team>;
@@ -36,8 +36,8 @@ export function Sidebar({ teams, selectedCode, onSelect }: Props) {
     return list;
   }, [teams, group, status, sort, search]);
 
-  const totalRated = Object.values(teams).filter((t) => t.matches.length > 0).length;
-  const totalMatches = Object.values(teams).reduce((a, t) => a + t.matches.length, 0);
+  // const totalRated = Object.values(teams).filter((t) => t.matches.length > 0).length;
+  // const totalMatches = Object.values(teams).reduce((a, t) => a + t.matches.length, 0);
 
   return (
     <aside className="sidebar">
