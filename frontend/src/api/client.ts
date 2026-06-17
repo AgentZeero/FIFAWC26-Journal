@@ -2,7 +2,7 @@ import type { Team, MatchRating, MatchRatingInput, TeamStatus } from "../types";
 
 const BASE = import.meta.env.VITE_API_URL ?? "http://127.0.0.1:8002";
 
-function getAuthHeaders() {
+function getAuthHeaders(): Record<string, string> {
   const token = localStorage.getItem("token");
   if (token) {
     return { Authorization: `Bearer ${token}` };
@@ -11,10 +11,10 @@ function getAuthHeaders() {
 }
 
 async function req<T>(path: string, init?: RequestInit): Promise<T> {
-  const headers = {
+  const headers: Record<string, string> = {
     "Content-Type": "application/json",
     ...getAuthHeaders(),
-    ...init?.headers,
+    ...(init?.headers as Record<string, string> || {}),
   };
   
   const res = await fetch(`${BASE}${path}`, {
